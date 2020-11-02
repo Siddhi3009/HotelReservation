@@ -11,7 +11,6 @@ namespace HotelReservation
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
-        /// <returns>Cheapest Hotel</returns>
         public void FindCheapHotel(string startDate, string endDate)
         {
             HotelType hotelType = HotelType.LAKEWOOD;
