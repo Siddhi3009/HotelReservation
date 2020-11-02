@@ -25,18 +25,27 @@ namespace HotelReservation
             double rateRidgewood = ridgewood.FindRate(startDate, endDate);
             if (rateLakewood < rateBridgewood && rateLakewood < rateRidgewood)
             {
-                hotelType = HotelType.LAKEWOOD;
-                Console.WriteLine("Best hotel for your stay is " + hotelType + " Cost of stay: " + rateLakewood);
+                Console.WriteLine("Best hotel for your stay is " + HotelType.LAKEWOOD + " Cost of stay: " + rateLakewood);
+            }
+            if (rateLakewood == rateBridgewood && rateLakewood < rateRidgewood)
+            {
+                Console.WriteLine("Best hotel for your stay is " + HotelType.LAKEWOOD + ", " + HotelType.BRIDGEWOOD + " Cost of stay: " + rateLakewood);
+            }
+            if (rateLakewood == rateRidgewood && rateLakewood < rateBridgewood)
+            {
+                Console.WriteLine("Best hotel for your stay is " + HotelType.LAKEWOOD + ", " + HotelType.RIDGEWOOD + " Cost of stay: " + rateLakewood);
             }
             if (rateBridgewood < rateLakewood && rateBridgewood < rateRidgewood)
             {
-                hotelType = HotelType.BRIDGEWOOD;
-                Console.WriteLine("Best hotel for your stay is " + hotelType + " Cost of stay: " + rateBridgewood);
+                Console.WriteLine("Best hotel for your stay is " + HotelType.BRIDGEWOOD + " Cost of stay: " + rateBridgewood);
+            }
+            if (rateBridgewood == rateRidgewood && rateBridgewood > rateLakewood)
+            {
+                Console.WriteLine("Best hotel for your stay is " + HotelType.BRIDGEWOOD + ", " + HotelType.RIDGEWOOD + " Cost of stay: " + rateLakewood);
             }
             if (rateRidgewood < rateLakewood && rateRidgewood < rateBridgewood)
             {
-                hotelType = HotelType.RIDGEWOOD;
-                Console.WriteLine("Best hotel for your stay is " + hotelType + " Cost of stay: " + rateRidgewood);
+                Console.WriteLine("Best hotel for your stay is " + HotelType.RIDGEWOOD + " Cost of stay: " + rateRidgewood);
             }
         }
     }
