@@ -7,6 +7,9 @@ namespace HotelReservation
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Hotel Reservation System");
+            Console.WriteLine("Choose your customer type \n1. NORMAL \n2. REWARD");
+            int type = Convert.ToInt32(Console.ReadLine());
+            CustomerType customerType = (CustomerType)type;
             Console.WriteLine("Enter start date of your stay in dd/mm/yyyy format");
             string startDate = Console.ReadLine();
             Console.WriteLine("Enter end date of your stay in dd/mm/yyyy format");
@@ -17,10 +20,10 @@ namespace HotelReservation
             switch (choice)
             {
                 case 1:
-                    customerService.FindCheapHotel(startDate, endDate);
+                    customerService.FindCheapHotel(startDate, endDate, customerType);
                     break;
                 case 2:
-                    customerService.FindBestRatedHotel(startDate, endDate);
+                    customerService.FindBestRatedHotel(startDate, endDate, customerType);
                     break;
                 default:
                     throw new HotelReservationException(HotelReservationException.ExceptionType.INVALID_CHOICE, "Invalid choice");

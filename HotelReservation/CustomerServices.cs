@@ -11,16 +11,16 @@ namespace HotelReservation
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
-        public void FindCheapHotel(string startDate, string endDate)
+        public void FindCheapHotel(string startDate, string endDate, CustomerType customerType)
         {
             HotelType hotelType = HotelType.LAKEWOOD;
-            Hotel lakewood = new Hotel(hotelType);
+            Hotel lakewood = new Hotel(hotelType, customerType);
             double rateLakewood = lakewood.FindRate(startDate, endDate);
             hotelType = HotelType.BRIDGEWOOD;
-            Hotel bridgewood = new Hotel(hotelType);
+            Hotel bridgewood = new Hotel(hotelType, customerType);
             double rateBridgewood = bridgewood.FindRate(startDate, endDate);
             hotelType = HotelType.RIDGEWOOD;
-            Hotel ridgewood = new Hotel(hotelType);
+            Hotel ridgewood = new Hotel(hotelType, customerType);
             double rateRidgewood = ridgewood.FindRate(startDate, endDate);
             if (rateLakewood < rateBridgewood && rateLakewood < rateRidgewood)
             {
@@ -40,16 +40,16 @@ namespace HotelReservation
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
-        public void FindBestRatedHotel(string startDate, string endDate)
+        public void FindBestRatedHotel(string startDate, string endDate, CustomerType customerType)
         {
             HotelType hotelType = HotelType.LAKEWOOD;
-            Hotel lakewood = new Hotel(hotelType);
+            Hotel lakewood = new Hotel(hotelType, customerType);
             double rateLakewood = lakewood.FindRate(startDate, endDate);
             hotelType = HotelType.BRIDGEWOOD;
-            Hotel bridgewood = new Hotel(hotelType);
+            Hotel bridgewood = new Hotel(hotelType, customerType);
             double rateBridgewood = bridgewood.FindRate(startDate, endDate);
             hotelType = HotelType.RIDGEWOOD;
-            Hotel ridgewood = new Hotel(hotelType);
+            Hotel ridgewood = new Hotel(hotelType, customerType);
             double rateRidgewood = ridgewood.FindRate(startDate, endDate);
             if(lakewood.RATING > bridgewood.RATING && lakewood.RATING > ridgewood.RATING)
                 Console.WriteLine("Best hotel for your stay is " + HotelType.LAKEWOOD + " Rating: " + lakewood.RATING + " Cost of stay: " + rateLakewood);
