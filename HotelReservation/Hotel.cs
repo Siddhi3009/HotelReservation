@@ -13,6 +13,8 @@ namespace HotelReservation
         private readonly double WEEKDAY_RATE;
         //Weekend rate of hotel
         private readonly double WEEKEND_RATE;
+        //Rating of hotel
+        public readonly int RATING;
         /// <summary>
         /// Parameterized constructor of Hotel
         /// </summary>
@@ -26,16 +28,19 @@ namespace HotelReservation
                 {
                     this.WEEKDAY_RATE = 110;
                     this.WEEKEND_RATE = 90;
+                    this.RATING = 3;
                 }
                 if (hotelType.Equals(HotelType.BRIDGEWOOD))
                 {
                     this.WEEKDAY_RATE = 150;
                     this.WEEKEND_RATE = 50;
+                    this.RATING = 4;
                 }
                 if (hotelType.Equals(HotelType.RIDGEWOOD))
                 {
                     this.WEEKDAY_RATE = 220;
                     this.WEEKEND_RATE = 150;
+                    this.RATING = 5;
                 }
             }
             catch (HotelReservationException)
