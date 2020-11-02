@@ -35,6 +35,11 @@ namespace HotelReservation
                 Console.WriteLine("Best hotel for your stay is " + HotelType.RIDGEWOOD + " Rating: " + ridgewood.RATING + " Cost of stay: " + rateRidgewood);
             }
         }
+        /// <summary>
+        /// Finds best rated hotel
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
         public void FindBestRatedHotel(string startDate, string endDate)
         {
             HotelType hotelType = HotelType.LAKEWOOD;
