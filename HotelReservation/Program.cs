@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace HotelReservation
 {
     class Program
@@ -8,6 +7,7 @@ namespace HotelReservation
         {
             Console.WriteLine("Welcome to Hotel Reservation System");
             string type = "";
+            HotelType hotel;
             try
             {
                 CustomerServices customerService = new CustomerServices();
@@ -22,10 +22,10 @@ namespace HotelReservation
                 switch (choice)
                 {
                     case 1:
-                        customerService.FindCheapHotel(startDate, endDate, customerType);
+                        hotel = customerService.FindCheapHotel(startDate, endDate, customerType);
                         break;
                     case 2:
-                        customerService.FindBestRatedHotel(startDate, endDate, customerType);
+                        hotel = customerService.FindBestRatedHotel(startDate, endDate, customerType);
                         break;
                     default:
                         throw new HotelReservationException(HotelReservationException.ExceptionType.INVALID_CHOICE, "Invalid choice");

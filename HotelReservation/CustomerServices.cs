@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-
 namespace HotelReservation
 {
-    class CustomerServices
+    public class CustomerServices
     {
         //Regex for normal customer type
         public string REGEX_NORMAL = @"^[Nn][Oo][Rr][Mm][Aa][Ll]$";
@@ -16,7 +15,9 @@ namespace HotelReservation
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
-        public void FindCheapHotel(string startDate, string endDate, CustomerType customerType)
+        /// <param name="customerType"></param>
+        /// <returns>HotelType enum</returns>
+        public HotelType FindCheapHotel(string startDate, string endDate, CustomerType customerType)
         {
             HotelType hotelType = HotelType.LAKEWOOD;
             Hotel lakewood = new Hotel(hotelType, customerType);
@@ -29,23 +30,29 @@ namespace HotelReservation
             double rateRidgewood = ridgewood.FindRate(startDate, endDate);
             if (rateLakewood < rateBridgewood && rateLakewood < rateRidgewood)
             {
+                hotelType = HotelType.LAKEWOOD;
                 Console.WriteLine("Best hotel for your stay is " + HotelType.LAKEWOOD + ", Rating: " + lakewood.RATING + ", Cost of stay: " + rateLakewood);
             }
             if ((rateBridgewood < rateLakewood && rateBridgewood < rateRidgewood) || (rateLakewood == rateBridgewood && rateBridgewood < rateRidgewood))
             {
+                hotelType = HotelType.BRIDGEWOOD;
                 Console.WriteLine("Best hotel for your stay is " + HotelType.BRIDGEWOOD + ", Rating: " + bridgewood.RATING + ", Cost of stay: " + rateBridgewood);
             }
             if ((rateRidgewood < rateLakewood && rateRidgewood < rateBridgewood) || (rateLakewood == rateRidgewood && rateRidgewood < rateBridgewood) || (rateBridgewood == rateRidgewood && rateRidgewood < rateLakewood))
             {
+                hotelType = HotelType.RIDGEWOOD;
                 Console.WriteLine("Best hotel for your stay is " + HotelType.RIDGEWOOD + ", Rating: " + ridgewood.RATING + ", Cost of stay: " + rateRidgewood);
             }
+            return hotelType;
         }
         /// <summary>
         /// Finds best hotel according to rating
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
-        public void FindBestRatedHotel(string startDate, string endDate, CustomerType customerType)
+        /// <param name="customerType"></param>
+        /// <returns>HotelType enum</returns>
+        public HotelType FindBestRatedHotel(string startDate, string endDate, CustomerType customerType)
         {
             HotelType hotelType = HotelType.LAKEWOOD;
             Hotel lakewood = new Hotel(hotelType, customerType);
@@ -57,11 +64,21 @@ namespace HotelReservation
             Hotel ridgewood = new Hotel(hotelType, customerType);
             double rateRidgewood = ridgewood.FindRate(startDate, endDate);
             if (lakewood.RATING > bridgewood.RATING && lakewood.RATING > ridgewood.RATING)
+            {
+                hotelType = HotelType.LAKEWOOD;
                 Console.WriteLine("Best hotel for your stay is " + HotelType.LAKEWOOD + ", Rating: " + lakewood.RATING + ", Cost of stay: " + rateLakewood);
+            }
             if (bridgewood.RATING > lakewood.RATING && bridgewood.RATING > ridgewood.RATING)
+            {
+                hotelType = HotelType.BRIDGEWOOD;
                 Console.WriteLine("Best hotel for your stay is " + HotelType.BRIDGEWOOD + ", Rating: " + bridgewood.RATING + ", Cost of stay: " + rateBridgewood);
+            }
             if (ridgewood.RATING > lakewood.RATING && ridgewood.RATING > bridgewood.RATING)
+            {
+                hotelType = HotelType.RIDGEWOOD;
                 Console.WriteLine("Best hotel for your stay is " + HotelType.RIDGEWOOD + ", Rating: " + ridgewood.RATING + ", Cost of stay: " + rateRidgewood);
+            }
+            return hotelType;
         }
         /// <summary>
         /// Validates customer type 

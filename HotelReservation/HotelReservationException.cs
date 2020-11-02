@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace HotelReservation
 {
-    class HotelReservationException : Exception
+    public class HotelReservationException : Exception
     {
         /// <summary>
         /// Exception types
@@ -13,7 +12,6 @@ namespace HotelReservation
         {
             INVALID_DATE,
             INVALID_CUSTOMER_TYPE,
-            INVALID_HOTEL_TYPE,
             INVALID_CHOICE
         }
         ExceptionType type;
