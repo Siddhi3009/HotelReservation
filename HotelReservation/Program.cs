@@ -6,7 +6,6 @@ namespace HotelReservation
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Hotel Reservation System");
-            string type = "";
             HotelType hotel;
             try
             {
