@@ -12,7 +12,19 @@ namespace HotelReservation
             Console.WriteLine("Enter end date of your stay in dd/mm/yyyy format");
             string endDate = Console.ReadLine();
             CustomerServices customerService = new CustomerServices();
-            customerService.FindCheapHotel(startDate, endDate);
+            Console.WriteLine("Select your criteria of choice \n1. According to rates \n2. According to ratings");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    customerService.FindCheapHotel(startDate, endDate);
+                    break;
+                case 2:
+                    customerService.FindBestRatedHotel(startDate, endDate);
+                    break;
+                default:
+                    throw new HotelReservationException(HotelReservationException.ExceptionType.INVALID_CHOICE, "Invalid choice");
+            }
         }
     }
 }

@@ -13,7 +13,8 @@ namespace HotelReservation
         {
             INVALID_DATE,
             INVALID_CUSTOMER_TYPE,
-            INVALID_HOTEL_TYPE
+            INVALID_HOTEL_TYPE,
+            INVALID_CHOICE
         }
         ExceptionType type;
         /// <summary>
